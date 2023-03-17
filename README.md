@@ -15,12 +15,14 @@ The winnig condition can be determined by matching 3 cells in a row either verti
 2. Although code has descriptive variables and is self-explanatory ,inline comments are there for explanation.
 
 ## How to play
-1. Clone the repository
+1. clone this repository
 
-2. Go to src file and press ' alt + D '
+2. open src file and press ' alt + D '
 
-3. Type ' cmd '
+3. type ' cmd '
 
-4. In cmd.exe type ' java TicTacToe.java '
+4. in cmd.exe type ' javac *.java ' and press enter
 
-5. Press enter and enjoy playing :)
+5. now type ' java TicTacToe ' 
+
+6. press enter and enjoy playing :)
