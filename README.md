@@ -5,7 +5,7 @@ Tic-tac-toe non-GUI game played in a 4x4 game board with either human or AI
 
 At the beginning of the game 3 cells will be locked randomly allowing the players to place their position in 13 remaining cells
 
-The winnig condition can be determined by matching 3 cells in a row either vertically, horizontally or diagonally
+The winnig condition will be determined by matching 3 cells in order either vertically, horizontally or diagonally
 
 ***String based***
 
