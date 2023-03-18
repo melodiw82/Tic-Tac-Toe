@@ -15,6 +15,9 @@ public class GameEngine {
 
     // array storage for positions played by the human
     private final ArrayList<Integer> player2Position = new ArrayList<>();
+    
+    // array to generate unique random numbers for CPU
+    private final ArrayList<Integer> randShuffle = new ArrayList<>();
 
     // String to break the loop in case of winning, and also to print out the results
     private String win = "";
@@ -85,6 +88,9 @@ public class GameEngine {
         }
         generateRandomLucks(randArr);
         printGameBoard(gameBoard);
+        for (int i = 0; i < 15; i++) {
+            randShuffle.add(i);
+        }
     }
 
     /**
@@ -97,13 +103,19 @@ public class GameEngine {
     private void placePiece(String[] gameBoard, int pos, String user) {
         String symbol = "";
 
-        if (user.equals("player")) {
-            symbol = "X";
-            playerPosition.add(pos);
-        } else if (user.equals("computer")) {
-            symbol = "O";
-            computerPosition.add(pos);
-        }
+         switch (user) {
+            case "player" -> {
+                symbol = "X";
+                playerPosition.add(pos);
+            }
+            case "computer" -> {
+                symbol = "O";
+                computerPosition.add(pos);
+            }
+            case "human" -> {
+                symbol = "O";
+                player2Position.add(pos);
+            }
 
         switch (pos) {
             case 0 -> gameBoard[0] = symbol;
@@ -298,8 +310,10 @@ public class GameEngine {
                 break;
             }
 
-            // gets random number from the computer
-            int computerPos = rand.nextInt(0, 15);
+            // generating unique random numbers for CPU
+            Collections.shuffle(randShuffle);
+            int computerPos = randShuffle.get(0);
+            randShuffle.remove(computerPos);
 
             // checks to generate a non-repetitive random number
             while (playerPosition.contains(computerPos) || computerPosition.contains(computerPos) || computerPos == randArr[0] || computerPos == randArr[1] || computerPos == randArr[2]) {
@@ -369,7 +383,7 @@ public class GameEngine {
             }
 
             // places player 'O' position on the game board
-            placePiece(gameBoard, player2Pos, "computer");
+            placePiece(gameBoard, player2Pos, "human");
 
             // checks if player 'O' has won the game
             win = checkWinner(gameBoard, player2Pos, win);
