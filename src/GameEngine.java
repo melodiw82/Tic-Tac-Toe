@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
 
 public class GameEngine {
     private final Random rand = new Random();
@@ -81,6 +84,7 @@ public class GameEngine {
             gameBoard[i] = String.valueOf(i);
         }
         generateRandomLucks(randArr);
+        printGameBoard(gameBoard);
     }
 
     /**
@@ -301,7 +305,7 @@ public class GameEngine {
                 break;
             }
 
-            // generating random numbers for CPU
+            // gets random number from the computer
             int computerPos = rand.nextInt(0, 15);
 
             // checks to generate a non-repetitive random number
