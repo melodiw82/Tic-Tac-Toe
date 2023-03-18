@@ -9,8 +9,6 @@ public class GameEngine {
 
     // array storage for positions played by the CPU
     private final ArrayList<Integer> computerPosition = new ArrayList<>();
-    // array to generate unique random numbers for CPU
-    private final ArrayList<Integer> randShuffle = new ArrayList<>();
 
     // array storage for positions played by the human
     private final ArrayList<Integer> player2Position = new ArrayList<>();
@@ -83,10 +81,6 @@ public class GameEngine {
             gameBoard[i] = String.valueOf(i);
         }
         generateRandomLucks(randArr);
-        printGameBoard(gameBoard);
-        for (int i = 0; i < 15; i++) {
-            randShuffle.add(i);
-        }
     }
 
     /**
@@ -307,10 +301,8 @@ public class GameEngine {
                 break;
             }
 
-            // generating unique random numbers for CPU
-            Collections.shuffle(randShuffle);
-            int computerPos = randShuffle.get(0);
-            randShuffle.remove(computerPos);
+            // generating random numbers for CPU
+            int computerPos = rand.nextInt(0, 15);
 
             // checks to generate a non-repetitive random number
             while (playerPosition.contains(computerPos) || computerPosition.contains(computerPos) || computerPos == randArr[0] || computerPos == randArr[1] || computerPos == randArr[2]) {
